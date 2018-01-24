@@ -1,0 +1,34 @@
+{
+    "songList": [
+        {
+            "name": "光辉岁月",
+            "singer": "Beyond",
+            "link": "http://up.mcyt.net/down/32396.mp3",
+            "img": "img1.jpg"
+        },
+        {
+            "name": "七里香",
+            "singer": "周杰伦",
+            "link": "http://up.mcyt.net/down/32222.mp3",
+            "img": "img2.jpg"
+        },
+        {
+            "name": "说散就散",
+            "singer": "袁娅维",
+            "link": "http://up.mcyt.net/down/44833.mp3",
+            "img": "img3.jpg"
+        },
+        {
+            "name": "凉凉",
+            "singer": "张碧晨&杨宗纬",
+            "link": "http://up.mcyt.net/down/45000.mp3",
+            "img": "img4.jpg"
+        },
+        {
+            "name": "爱的供养",
+            "singer": "杨幂",
+            "link": "http://up.mcyt.net/down/34961.mp3",
+            "img": "img5.jpg"
+        }
+    ]
+}
