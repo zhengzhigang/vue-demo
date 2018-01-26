@@ -1,5 +1,8 @@
 <template>
     <div class="music">
+        <div class="music-title">
+            <h1>音乐播放器使用Vue制作</h1>
+        </div>
         <div class="music-info">
             <div class="music-name">
                 <h2 class="music-song-name">{{ song.name }}</h2>
@@ -12,12 +15,12 @@
                 </audio>
                 <div class="music-control-box">
                     <div class="music-prev icon" @click="prevSong"></div>
-                    <div class="music-play icon" @click="playSong"></div>
+                    <div class="music-play icon" :class="{play:isPlay}" @click="controlSong"></div>
                     <div class="music-next icon" @click="nextSong"></div>
                 </div>
             </div>
+            <div class="music-img" :style="imgStyle"></div>
         </div>
-        <div class="music-img" :style="imgStyle"></div>
     </div> 
 </template>
 <script>
@@ -34,16 +37,18 @@ export default {
                 background: '',
                 border: '1px solid red'
             },
-            imgNumber: 0
+            imgNumber: 0,
+            isPlay: true
         };
     },
     methods: {
         getSong: function (index) {
             var _this = this;
             var num = index;
-            this.$http.get('http://localhost:8080/mock/db.json')
-                .then(function (response) {
+            this.$http.get('http://zzgwz.cn/mock/db.json')
+                .then((response) => {
                     // 设置歌曲信息
+                    console.log(this);
                     var songLength = response.data.songList.length;
                     if (index >= songLength) {
                         num = 0;
@@ -73,11 +78,13 @@ export default {
             this.imgNumber = this.imgNumber - 1;
             this.getSong(this.imgNumber);
         },
-        playSong: function () {
+        controlSong: function () {
             var audio = this.$refs.audio;
             if (audio.paused) {
+                this.isPlay = true;
                 audio.play();
             } else {
+                this.isPlay = false;
                 audio.pause();
             }
         },
@@ -91,22 +98,29 @@ export default {
     },
     watch: {
         song: function (val) {
-            console.log(val);
             this.setSong();
         }
     },
     mounted: function () {
+        var audio = this.$refs.audio;
         this.getSong(this.imgNumber);
+        audio.onplaying = function () {
+            if (audio.ended) {
+                alert(2);
+            }
+        };
     }
 };
 </script>
 <style scoped>
 .music {
-    position: relative;
-    width: 700px;
+    width: 780px;
     margin: auto;
     margin-top: 72px;
     font-size: 16px;
+}
+.music-title {
+    margin-bottom: 40px;
 }
 .music-info {
     position: relative;
@@ -143,7 +157,12 @@ export default {
         transform: rotateZ(360deg)
     }
 }
-
+.music-control {
+    text-align: left;
+}
+.music-control-box {
+    margin-top: 20px;
+}
 .music-control-box .icon {
     display: inline-block;
     width: 32px;
@@ -157,7 +176,10 @@ export default {
 }
 .music-control-box .icon.music-play {
     margin: 0 15px;
-    background-position: 0 -64px;
+    background-position: 0 -96px;
+}
+.music-control-box .icon.music-play.play {
+     background-position: 0 -64px;
 }
 .music-control-box .icon.music-next {
     background-position: 0 -32px;

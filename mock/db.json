@@ -1,6 +1,12 @@
 {
     "songList": [
         {
+            "name": "凉凉",
+            "singer": "张碧晨&杨宗纬",
+            "link": "http://up.mcyt.net/down/45000.mp3",
+            "img": "img4.jpg"
+        },
+        {
             "name": "光辉岁月",
             "singer": "Beyond",
             "link": "http://up.mcyt.net/down/32396.mp3",
@@ -17,12 +23,6 @@
             "singer": "袁娅维",
             "link": "http://up.mcyt.net/down/44833.mp3",
             "img": "img3.jpg"
-        },
-        {
-            "name": "凉凉",
-            "singer": "张碧晨&杨宗纬",
-            "link": "http://up.mcyt.net/down/45000.mp3",
-            "img": "img4.jpg"
         },
         {
             "name": "爱的供养",

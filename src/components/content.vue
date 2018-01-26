@@ -1,7 +1,7 @@
 <template>
     <div class="content">
-        <h1>我是内容</h1>
-        <button @click="sendData">请求数据</button>
+        <!-- <h1>我是内容</h1>
+        <button @click="sendData">请求数据</button> -->
         <play-music></play-music>
     </div>
 </template>
